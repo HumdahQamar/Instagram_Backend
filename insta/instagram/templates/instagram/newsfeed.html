@@ -1,0 +1,24 @@
+{% extends "instagram/base.html" %}
+{% block title %}Newsfeed{% endblock %}
+{% block navbar_links %}
+    <a href="{% url 'search' %}">Search</a>
+    <a href="{% url 'new_post' %}">Add Post</a>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+{% block contents %}
+    <h1>Welcome, {{ user.username }}</h1>
+    <p><a href="{% url 'followers' user.pk %}">{{ followers.count }}</a> Follower{{ followers|pluralize }}</p>
+    <p><a href="{% url 'following' user.pk %}">{{ following.count }}</a> Following</p>
+    {% if user.avatar %}
+        <img id="avatar" src="{{ user.avatar.url }}" alt="My image" width="240"/>
+        <br>
+    {% endif %}
+    {% if posts %}
+        <h3>Posts</h3>
+        <br>
+        {% for post in posts %}
+            <img id="post" src="{{ post.image.url }}" alt="My image" width="240"/>
+            <p>{{ post.user.username }} at {{ post.created_at }} - {{ post.text }}</p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

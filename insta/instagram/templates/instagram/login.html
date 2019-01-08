@@ -1,0 +1,11 @@
+{% extends "instagram/base.html" %}
+{% block title %}Instagram{% endblock %}
+{% block contents %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <p>New to Instagram? <a href="{% url 'signup' %}"> SignUp </a></p>
+{% endblock %}

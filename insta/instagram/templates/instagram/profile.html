@@ -1,0 +1,27 @@
+{% extends "instagram/base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block navbar_links %}
+    <a href="{% url 'search' %}">Search</a>
+    <a href="{% url 'newsfeed' %}">Newsfeed</a>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+{% block contents %}
+    {% if user %}
+        <h1>{{ user.username }} </h1>
+        {% if user.avatar %}
+            <p><img id="avatar" src="{{ user.avatar.url }}" alt="My image" width="240"/></p>
+        {% endif %}
+        {% if not logged_in_profile and not already_followed %}
+            <p>{{ followers.count }} Follower{{ followers|pluralize }}</p>
+            <p>{{ following.count }} Following</p>
+            <a href="{% url 'follow' user.pk %}">Follow</a>
+        {% elif not logged_in_profile and already_followed %}
+            <p><a href="{% url 'followers' user.pk %}">{{ followers.count }}</a> Follower{{ followers|pluralize }}</p>
+            <p><a href="{% url 'following' user.pk %}">{{ following.count }}</a> Following</p>
+            <a href="{% url 'unfollow' user.pk %}">Unfollow</a>
+        {% elif user.is_authenticated %}
+            <a href="{% url 'search' %}">Search</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

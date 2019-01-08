@@ -1,0 +1,21 @@
+{% extends "instagram/base.html" %}
+{% block title %}User Search{% endblock %}
+{% block navbar_links %}
+{#    <a href="{% url 'search' %}">Search</a>#}
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+{% block contents %}
+    <br>
+    {% if errors %}
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action="" method="get">
+        <input type="text" name="query">
+        <input type="submit" value="Search">
+    </form>
+    <a href="{% url 'newsfeed' %}">Back</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+body {
+    /*margin-top:0;*/
+    /*margin-left:0;*/
+    /*margin-right:0;*/
+    /*margin-left: 20cm;*/
+    margin:0;padding:0
+}
+
+div#navigation-container a {
+    color: #8E9EA3;
+    /*text-align: right;*/
+}
+
+img#avatar {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+}

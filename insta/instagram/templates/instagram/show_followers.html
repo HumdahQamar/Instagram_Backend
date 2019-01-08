@@ -1,0 +1,12 @@
+{% extends "instagram/base.html" %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block navbar_links %}
+    <a href="{% url 'search' %}">Search</a>
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+{% block contents %}
+    <h1>{{ user.username }}</h1>
+    {% for follower in followers %}
+        <li><a href="{% url 'profile' follower.pk %}">{{ follower.username }}</a> - {{ follower.first_name }} {{ follower.last_name }}</li>
+    {% endfor %}
+{% endblock %}

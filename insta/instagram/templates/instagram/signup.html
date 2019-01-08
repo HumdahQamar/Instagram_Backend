@@ -1,0 +1,54 @@
+{% extends 'instagram/base.html' %}
+{##}
+{% block contents %}
+    <h2>Sign up</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Sign up</button>
+    </form>
+    <p>Already a user? <a href="{% url 'login' %}"> Login </a></p>
+
+{#    <form method="POST" enctype="multipart/form-data" id="signup-form">#}
+    <form method="POST" enctype="multipart/form-data" id="signup-form" action="{% url 'user-signup' %}">
+        {% csrf_token %}
+{#        {{ form.as_p }}#}
+        <label><b>Username</b></label>
+        <input class="username" type="text" placeholder="Enter Username" name="username" required>
+        <div class="username"><p></p></div>
+
+        <label><b>First Name</b></label>
+        <input class="first_name" type="text" placeholder="Enter First Name" name="first_name" required>
+        <div class="first_name"><p></p></div>
+        <label><b>Last Name</b></label>
+        <input class="last_name" type="text" placeholder="Enter Last Name" name="last_name" required>
+        <div class="last_name"><p></p></div>
+        <label><b>Email</b></label>
+        <input class="email" type="text" placeholder="Enter Email" name="email" required>
+        <div class="email"><p></p></div>
+        <label><b>Password</b></label>
+        <input class="password" type="password" placeholder="Enter Password" name="password" required>
+        <div class="password"><p></p></div>
+        <label><b>Date of Birth</b></label>
+        <input class="date_of_birth" type="date" name="date_of_birth" required>
+        <div class="date_of_birth"><p></p></div>
+        <button type="submit">Sign up</button>
+    </form>
+    <p>Already a user? <a href="{% url 'login' %}"> Login </a></p>
+{% endblock %}
+{% block javascript %}
+
+{#    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>#}
+{#    <script type="text/javascript" src="/instagram/templates/instagram/javascript/main.js"> </script>#}
+{#    <script>#}
+{#    $(document).ready(function () {#}
+{#        $("button").click(function (event) {#}
+{#            console.log(event)#}
+{#            event.preventDefault()#}
+{#            $(this).hide()#}
+{#        });#}
+{#    });#}
+{#    </script>#}
+
+{% endblock %}
